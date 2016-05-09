@@ -135,10 +135,11 @@
 									<div class="btnPosicion">
 										<!-- Button -->
 										<div class="controls">
-											 <input type='submit' class="btn btn-success" name="Enviar">Únete</input>
+											 <input type='submit' class="btn btn-success" name="Enviar">Entra</input>
 										</div>
 									</div>
                         		</form>
+                        		<p>{error}</p>
                         	</div>
                     </ul>
                 </nav>
@@ -154,7 +155,7 @@
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav">
                         <li><a href="#body">Home</a></li>
-                        <li><a href="#service">Rutas</a></li>
+                        <li><a href="logof.php">Rutas</a></li>
                         <li><a href="#portfolio">Noticias</a></li>
                         <li><a href="#testimonials">Leyes y prohibiciones</a></li>
                         <li><a href="#price">Entrenamiento</a></li>

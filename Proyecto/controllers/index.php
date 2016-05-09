@@ -23,14 +23,8 @@
 		if($tipo == 1){
 			$template->newBlock('menu1');
 			$template->assign('nombre',$nombre);
-			echo "<script>alert('Se supone el login es correcto');</script>";
-			echo "El nombre que hay en la sesion es ".$_SESSION['nombreUsuario'];
-			echo "Y su tipo es".$_SESSION['tipo'];
 		}else{
 			$template->newBlock('menu2');
-			echo "<script>alert('Se supone el login es correcto');</script>";
-			echo "El nombre que hay en la sesion es ".$_SESSION['nombreUsuario']." Y ME DAS IGUAL ";
-			echo "Y su tipo es".$_SESSION['tipo']." Y ME DAS IGUAL ";
 		}
 
 	}else{
@@ -49,7 +43,6 @@
 			@$passCif = md5($passIndex);
 
 			$consulta = "SELECT Login, Password, Nombre, Tipo FROM `usuarios` WHERE Login = '".$loginIndex."' AND Password = '".$passCif."'";
-			echo $consulta;
 
 			$newLogin = null;
 			$incr = 0;
@@ -82,6 +75,7 @@
 				echo "<script>alert('Se supone el login es correcto');</script>";
 				echo $_SESSION['nombreUsuario'];
 				echo $_SESSION['tipo'];
+				header("Location: login.php");
 
 
 				}else{
@@ -97,7 +91,6 @@
 
 				}else{
 					$template->assign('error',"Nombre, contraseña o captcha erroneos, intentalo de nuevo");
-					echo "<script>alert('Se supone que no se ha enviado por que no he rellenado una puta mierda');</script>";
 				}
 
 	}
