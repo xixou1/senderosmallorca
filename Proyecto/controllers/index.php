@@ -1,17 +1,17 @@
 <?php
+	error_reporting(0);
 // Hacemos los includes necesarios
     include_once("../models/usuario.php");
     include_once("../models/MySQLDataSource.php");
     include_once("../template_power/TemplatePower.php");
     include_once("funciones.php");
-
     session_start();
 
 	//Variables de sesion, para saber tipo y login de la persona coenctada
 	@$nombre = $_SESSION['nombreUsuario'];
 	@$usuario = $_SESSION['UsuarioIntroducido'];
 	@$tipo = $_SESSION['tipo'];
-
+	@$_SESSION['contador'] = 0;
 	//Iniciamos el objeto templatePower y lo preparamo
 	$template =  new TemplatePower("../templates/index.tpl");
 
@@ -33,7 +33,9 @@
 		$template->newBlock('error');
 
 		if(isset($_POST['Enviar']) && !empty($_POST['username']) && !empty($_POST['password'])){
-				
+			
+			@$_SESSION['contador'] = 0;
+
 			$con = new MySQLDataSource();
 
 			$con -> conectar();
@@ -70,29 +72,16 @@
 
 				if((@$loginBD == @$loginIndex) && (@$passCif == @$passBD)){
 
-				$_SESSION['nombreUsuario'] = $nameBD;
-				$_SESSION['tipo'] = $tipoBD;
-				echo "<script>alert('Se supone el login es correcto');</script>";
-				echo $_SESSION['nombreUsuario'];
-				echo $_SESSION['tipo'];
-				header("Location: login.php");
-
-
+					$_SESSION['nombreUsuario'] = $nameBD;
+					$_SESSION['tipo'] = $tipoBD;
+					$_SESSION['contador'] = 0;
+					header("Location: login.php");
 				}else{
 
-				echo "<script>alert('Se supone el login es incorrecto, pero se ha enviado');</script>";
-				echo $loginBD;
-				echo $loginIndex;
-				echo $passCif;
-				echo $passBD;
-
+					echo "<script>alert('Datos incorrectos');</script>";
+				
 				}
-
-
-				}else{
-					$template->assign('error',"Nombre, contraseña o captcha erroneos, intentalo de nuevo");
-				}
-
+		}
 	}
 
 		$template->newBlock('banner');

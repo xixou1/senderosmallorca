@@ -81,25 +81,53 @@
         	margin-top: -6%;
         }
 
-        .btnPosicion{
-        	margin-top:2%;
-        	margin-left: -1%;
-        }
-
-        .posicionLogin {
-
+        .posicionMenu{
+        	margin-left: 95%;
+        	margin-top: -4%;
         	width: 60%;
-        	margin-left: 85%;
-        	margin-top: 2%;
+        	padding: 5%;
+        	color:#DED35C;
 
         }
 
-        .posicionNombre{
-
-        	margin-left: 0%;
-        	width: 50%;
+        .posicionMenu input{
+        	font-size: 14px;
+        	padding-left: 1%;
         }
+
         </style>
+
+        <script type="text/javascript">
+
+        function logof(){
+        	window.location.href = "logof.php";
+        }
+
+        function index(){
+        	window.location.href = "index.php";
+        }
+
+        </script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('div.posicionMenu').hide();
+			    $("a.Ocultame").click(function(){
+			       	if($('a.Ocultame').attr("id") == "oculto"){
+			       		$('div.posicionMenu').show();
+			       		$('a.Ocultame').attr("id","visible");
+			       	}else{
+			       		$('div.posicionMenu').hide();
+			       		$('a.Ocultame').attr("id","oculto");
+			       	}
+
+			    });
+		});
+		</script>
+
+
+
 
     </head>
 
@@ -109,40 +137,31 @@
 
         <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
             <div class="container">
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <ul id="nav" class="nav navbar-nav">
-                        <li><a href="#body">Home</a></li>
-                        <li><a href="#service">Rutas</a></li>
-                        <li><a href="#portfolio">Noticias</a></li>
-                        <li><a href="#testimonials">Leyes y prohibiciones</a></li>
-                        <li><a href="#price">Entrenamiento</a></li>
-                        	<div id="Login" class="posicionLogin">
-                        		<form name='input' method="POST">
-									<div class="posicionNombre">
-										      <!-- Username -->
-									<label class="control-label"  for="username">Nombre de usuario</label>
-										<div class="controls">
-										    <input type="text" id="username" name="username" placeholder="" class="inputFormu">
-										</div>
-									</div>
- 									<div class="control-group">
-									<!-- Password-->
-										<label class="control-label" for="password">Contraseña</label>
-											<div class="controls">
-											     <input type="password" id="password" name="password" placeholder="" class="inputFormu">
-											</div>
-									</div>
-									<div class="btnPosicion">
-										<!-- Button -->
-										<div class="controls">
-											 <input type='submit' class="btn btn-success" name="Enviar">Entra</input>
-										</div>
-									</div>
-                        		</form>
-                        		<p>{error}</p>
-                        	</div>
-                    </ul>
-                </nav>
+	            <ul id="nav" class="nav navbar-nav">
+	                <li><a href="index.php" onclick="index()">Home</a></li>
+	                <li><a href="#service">Rutas</a></li>
+	                <li><a href="#portfolio">Noticias</a></li>
+	                <li><a href="#testimonials">Leyes y prohibiciones</a></li>
+	                <li><a href="#price">Entrenamiento</a></li>
+	                <li><a href="#" class="Ocultame" id="oculto">Conectarse</a></li>
+	                <div class="posicionMenu">
+	                	<table>
+		                    <form name='input' method="POST">
+		                    	<tr>
+									<td><label class="control-label"  for="username">Nombre de usuario</label></td>
+									<td><input type="text" id="username" name="username" placeholder="" class="inputFormu" required></td>
+								</tr>
+								<tr>
+									<td><label class="control-label" for="password">Contraseña</label></td>
+									<td><input type="password" id="password" name="password" placeholder="" class="inputFormu" required></td>
+								</tr>
+								<tr>
+									<td><input type='submit' class="btn btn-success" name="Enviar"></input></td>
+								</tr>
+		                    </form>
+		                </table>
+	                </div>
+	            </ul>
             </div>
         </header>
 
@@ -154,13 +173,13 @@
             <div class="container">
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav">
-                        <li><a href="#body">Home</a></li>
+                        <li><a href="index.php" onclick="index()">Home</a></li>
                         <li><a href="logof.php">Rutas</a></li>
                         <li><a href="#portfolio">Noticias</a></li>
                         <li><a href="#testimonials">Leyes y prohibiciones</a></li>
                         <li><a href="#price">Entrenamiento</a></li>
                         <li><a href="#nada">Bienvenido, {nombre}</a></li>
-                        <li><a href="logof.php">Desconectar</a></li>
+                        <li><a href="logof.php" onclick="logof()">Desconectar</a></li>
                     </ul>
                 </nav>
             </div>
@@ -174,7 +193,7 @@
             <div class="container">
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav">
-                        <li><a href="#body">Home</a></li>
+                        <li><a href="index.php" onclick="index()">Home</a></li>
                         <li><a href="#service">Rutas</a></li>
                         <li><a href="#portfolio">Noticias</a></li>
                         <li><a href="#testimonials">Leyes y prohibiciones</a></li>
@@ -203,7 +222,7 @@
                             <div class="caption-content">
                                 <h2 class="animated fadeInDown">Senderos de Mallorca</h2>
                                 <span class="animated fadeInDown">Rutas y excursiones por los senderos de Mallorca</span>
-                                <a href="#" class="btn btn-blue btn-effect">Únete a nosotros</a>
+                                <a href="registro.php" class="btn btn-blue btn-effect">Únete a nosotros</a>
                             </div>
                         </div>
 
@@ -216,7 +235,7 @@
                             <div class="caption-content">
                                 <h2>Senderos de Mallorca</h2>
                                 <span>Rutas y excursiones por los senderos de Mallorca</span>
-                                <a href="#" class="btn btn-blue btn-effect">Únete a nosotros</a>
+                                <a href="registro.php" class="btn btn-blue btn-effect">Únete a nosotros</a>
                             </div>
                         </div>
 
@@ -229,7 +248,7 @@
                             <div class="caption-content">
                                 <h2>BLUE Onepage HTML5 Template</h2>
                                 <span>Clean and Professional one page Template</span>
-                                <a href="#" class="btn btn-blue btn-effect">Join US</a>
+                                <a href="registro.php" class="btn btn-blue btn-effect">Join US</a>
                             </div>
                         </div>
 
